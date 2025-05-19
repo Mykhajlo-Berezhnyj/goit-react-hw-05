@@ -11,7 +11,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  
 }
+ body {
+  background-image: linear-gradient(to right, rgb(17, 1, 58), rgb(50, 3, 82));
+ }
 
 h1,
 h2,
@@ -62,7 +67,7 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
 }
@@ -103,3 +108,4 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
