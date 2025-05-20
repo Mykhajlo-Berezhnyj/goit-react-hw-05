@@ -10,9 +10,11 @@ const axiosInstance = axios.create({
   },
 });
 
-export const getTrendingMovies = async () => {
-  const { data } = await axiosInstance.get('/trending/movie/day');
-  return data.results;
+export const getTrendingMovies = async (page=1) => {
+  const { data } = await axiosInstance.get('/trending/movie/day', {
+      params: { page }
+    });
+  return data;
 };
 
 export const searchMovie = async query => {

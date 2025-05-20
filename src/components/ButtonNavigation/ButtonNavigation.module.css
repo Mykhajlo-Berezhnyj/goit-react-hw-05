@@ -1,0 +1,27 @@
+.btns {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-nav {
+    padding: 3px, 5px;
+    border-radius: 12px;
+    color: blue;
+    transform: scale(1);
+
+
+    &:hover {
+        background-image: radial-gradient(circle at center, white, blue);
+        color: orangered;
+        font-weight: 800;
+        transform: scale(1.1);
+    }
+}
+
+.dots {
+    display: inline-flex;
+    width: 40px;
+    justify-content: center;
+    color: beige;
+
+}
