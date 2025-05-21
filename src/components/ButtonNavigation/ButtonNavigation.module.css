@@ -1,27 +1,41 @@
 .btns {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .btn-nav {
-    padding: 3px, 5px;
-    border-radius: 12px;
-    color: blue;
-    transform: scale(1);
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  color: blue;
+  cursor: pointer;
+  transform: scale(1);
 
+  &:not(:disabled):hover {
+    background-image: radial-gradient(circle at center, white, blue);
+    color: orangered;
+    font-weight: 800;
+    transform: scale(1.1);
+  }
 
-    &:hover {
-        background-image: radial-gradient(circle at center, white, blue);
-        color: orangered;
-        font-weight: 800;
-        transform: scale(1.1);
-    }
+  &:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
 }
 
 .dots {
-    display: inline-flex;
-    width: 40px;
-    justify-content: center;
-    color: beige;
+  display: inline-flex;
+  width: 40px;
+  justify-content: center;
+  color: beige;
+}
 
+.active {
+  background-image: radial-gradient(circle at center, white, orangered);
+  font-weight: 800;
+  color: orangered;
+  transform: scale(1.1);
+  cursor: not-allowed;
 }
