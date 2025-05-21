@@ -6,3 +6,9 @@
     gap: 20px;
 }
 
+.title {
+    font-weight: 800;
+    background-image: linear-gradient(to left, white, orangered);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

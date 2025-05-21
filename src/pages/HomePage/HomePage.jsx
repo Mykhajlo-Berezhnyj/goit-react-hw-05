@@ -6,7 +6,7 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import { getTrendingMovies } from '../../servise/movieApi';
 import ButtonNavigation from '../../components/ButtonNavigation/ButtonNavigation';
 import css from './home.module.css';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useLocation } from 'react-router-dom';
 
 export default function HomePage() {
   const [error, setError] = useState(null);
@@ -15,7 +15,20 @@ export default function HomePage() {
   const [loading, setLoading] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const page = Number(searchParams.get('page') || 1);
+    const page = Number(searchParams.get('page') || 1);
+    
+    const location = useLocation();
+
+    useEffect(() => {
+        const savedScroll = location.state?.pageScroll;
+
+        if (savedScroll !== undefined) {
+          
+            window.scrollTo({ top: savedScroll, behavior: 'instant' });
+        }
+            
+    }, [location]);
+
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -25,7 +38,7 @@ export default function HomePage() {
         const { results, total_pages } = await getTrendingMovies(page);
         setMovies(results);
         setTotalPages(total_pages);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+         window.scrollTo({ top: 0, behavior: 'smooth' });
       } catch (err) {
         setError(err.message || 'Something went wrong.');
       } finally {
@@ -42,7 +55,8 @@ export default function HomePage() {
   return (
     <div className={css.container}>
       {loading && <Loader />}
-      {error && <ErrorMessage message={error} />}
+          {error && <ErrorMessage message={error} />}
+          <h2 className={css.title}>Trending today:</h2>
       <MovieList className={css.list} movies={movies} />
       {totalPages > 1 && (
         <ButtonNavigation

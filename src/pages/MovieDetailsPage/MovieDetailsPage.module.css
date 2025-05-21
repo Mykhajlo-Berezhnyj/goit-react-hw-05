@@ -1,0 +1,70 @@
+.container {
+    display: flex;
+    gap: 24px;
+}
+
+.overview {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 24px;
+    color: beige;
+    
+}
+
+.title-movie {
+    color: orangered;
+    text-decoration: underline;
+}
+
+.info {
+    display: flex;
+    gap: 30px;
+}
+
+.btn-back {
+    display: block;
+    position: relative;
+    padding: 6px 12px;
+    margin-bottom: 20px;
+    border-radius: 10px;    
+    color: blue;
+    cursor: pointer;
+    transform: scale(1);
+
+    &::after {
+        content: '<<';
+        position: absolute;
+        top: 2px;  
+        right: -30px;
+        color: orangered;
+        font-size: large;
+        font-weight: 800;
+        opacity: 0;
+    }
+    
+     &:hover {
+            background-image: radial-gradient(circle at center, white, blue);
+            color: black;
+            font-weight: 600;
+            transform: scale(1.1);
+        }
+
+     &:hover::after {
+       opacity: 1;
+       animation: blinking 1s infinite;
+        }
+
+    }
+
+    @keyframes blinking {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }

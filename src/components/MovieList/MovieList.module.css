@@ -6,9 +6,11 @@
 
 .item {
     color: beige;
+    padding: 10px;
 
     &:hover {
-        color: orangered;
-        text-decoration: underline;
+    background-image: linear-gradient(to right, rgb(54, 5, 54), rgb(5, 5, 83));
+
     }
 }
+

@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+.movie {
+    color: beige;
+    transform: scale(1);
+
+
+    &:hover {
+        color: orangered;
+        text-decoration: underline;
+        transform: translateX(40px) scale(1.15);
+    
+    }
+} 
+
+.overview {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+}
