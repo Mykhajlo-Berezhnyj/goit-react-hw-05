@@ -11,7 +11,7 @@
   cursor: pointer;
   transform: scale(1);
 
-  &:not(:disabled):hover {
+  &:not(:disabled):not(.active):hover {
     background-image: radial-gradient(circle at center, white, blue);
     color: orangered;
     font-weight: 800;
@@ -38,4 +38,8 @@
   color: orangered;
   transform: scale(1.1);
   cursor: not-allowed;
+
+  &:hover {
+    background-image: radial-gradient(circle to center, white, orangered);
+  }
 }

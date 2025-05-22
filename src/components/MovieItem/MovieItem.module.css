@@ -1,29 +1,27 @@
 .container {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
 
-    &:hover {
-        transform: scale(1.05);
-    }
+  &:hover {
+    transform: translateX(32px) scale(1.05);
+  }
 }
 
 .movie {
-    color: beige;
-    transform: scale(1);
+  color: beige;
+  transform: scale(1);
 
-
-    &:hover {
-        color: orangered;
-        text-decoration: underline;
-        transform: translateX(40px) scale(1.15);
-    
-    }
-} 
+  &:hover {
+    color: orangered;
+    text-decoration: underline;
+    transform: translateX(74px) scale(1.15);
+  }
+}
 
 .overview {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
 }

@@ -15,20 +15,7 @@ export default function HomePage() {
   const [loading, setLoading] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
-    const page = Number(searchParams.get('page') || 1);
-    
-    const location = useLocation();
-
-    useEffect(() => {
-        const savedScroll = location.state?.pageScroll;
-
-        if (savedScroll !== undefined) {
-          
-            window.scrollTo({ top: savedScroll, behavior: 'instant' });
-        }
-            
-    }, [location]);
-
+  const page = Number(searchParams.get('page') || 1);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -38,7 +25,7 @@ export default function HomePage() {
         const { results, total_pages } = await getTrendingMovies(page);
         setMovies(results);
         setTotalPages(total_pages);
-         window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } catch (err) {
         setError(err.message || 'Something went wrong.');
       } finally {
@@ -54,9 +41,9 @@ export default function HomePage() {
 
   return (
     <div className={css.container}>
+      <h2 className={css.title}>Trending today:</h2>
       {loading && <Loader />}
-          {error && <ErrorMessage message={error} />}
-          <h2 className={css.title}>Trending today:</h2>
+      {error && <ErrorMessage message={error} />}
       <MovieList className={css.list} movies={movies} />
       {totalPages > 1 && (
         <ButtonNavigation
