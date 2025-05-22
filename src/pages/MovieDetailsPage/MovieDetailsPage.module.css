@@ -1,11 +1,17 @@
 .container {
     display: flex;
+    flex-direction: column;
     gap: 24px;
 }
 
+.card {
+    display: flex;
+    gap: 24px;
+}
 .overview {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 10px;
     padding: 24px;
     color: beige;
@@ -25,6 +31,7 @@
 .btn-back {
     display: block;
     position: relative;
+    max-width: 60px;
     padding: 6px 12px;
     margin-bottom: 20px;
     border-radius: 10px;    
@@ -45,8 +52,8 @@
     
      &:hover {
             background-image: radial-gradient(circle at center, white, blue);
-            color: black;
-            font-weight: 600;
+            color: orangered;
+            font-weight: 700;
             transform: scale(1.1);
         }
 

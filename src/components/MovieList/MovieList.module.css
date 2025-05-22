@@ -9,7 +9,7 @@
     padding: 10px;
 
     &:hover {
-    background-image: linear-gradient(to right, rgb(54, 5, 54), rgb(5, 5, 83));
+    background-image: linear-gradient(to left, rgb(10, 60, 168), rgb(5, 5, 83));
 
     }
 }

@@ -6,16 +6,23 @@
   &:hover {
     transform: translateX(32px) scale(1.05);
   }
+    &:hover .overview {
+      padding-right: 50px;
+    }
+
 }
 
 .movie {
   color: beige;
-  transform: scale(1);
+  font-size: 20px;
+  padding-bottom: 4px;
 
   &:hover {
     color: orangered;
     text-decoration: underline;
-    transform: translateX(74px) scale(1.15);
+    font-size: 22px;
+    font-weight: 700;
+    padding-bottom: 0;
   }
 }
 

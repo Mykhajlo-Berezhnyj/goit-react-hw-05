@@ -4,7 +4,15 @@ import MovieItem from '../MovieItem/MovieItem';
 import css from './MovieList.module.css';
 
 export default function MovieList({ movies = [] }) {
-  const location = useLocation();
+    const location = useLocation();
+  
+    useEffect(() => {
+      const scrollY = location.state?.pageScroll;
+      if (scrollY !== undefined) {
+        window.scrollTo({ top: scrollY, behavior: 'auto' });
+      }
+    }, [location.state?.pageScroll, movies.length]);
+      
 
   useEffect(() => {
     const scrollY = location.state?.pageScroll;

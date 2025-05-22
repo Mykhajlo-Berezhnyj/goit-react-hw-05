@@ -41,10 +41,12 @@ export default function HomePage() {
 
   return (
     <div className={css.container}>
-      <h2 className={css.title}>Trending today:</h2>
-      {loading && <Loader />}
-      {error && <ErrorMessage message={error} />}
-      <MovieList className={css.list} movies={movies} />
+      <div className={css['list-wrapper']}>
+          <h2 className={css.title}>Trending today:</h2>
+          {loading && <Loader />}
+          {error && <ErrorMessage message={error} />}
+          <MovieList className={css.list} movies={movies} />
+      </div>
       {totalPages > 1 && (
         <ButtonNavigation
           page={page}

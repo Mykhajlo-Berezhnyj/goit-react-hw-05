@@ -4,13 +4,18 @@ import Loader from '../Loader/Loader';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import { useParams } from 'react-router-dom';
 import { movieCredits } from '../../servise/movieApi';
-import noImage from '../../img/no-image.jpg';
+import CastItem from '../CastItem/CastItem';
+
 
 export default function MovieCast() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
+  const [cast, setCast] = useState([]);
+  const [visibleCount, setVisibleCount] = useState(5);
   const { movieId } = useParams();
+
+    
+    
 
   useEffect(() => {
     const fetchCast = async () => {
@@ -19,7 +24,8 @@ export default function MovieCast() {
         setError(null);
         setLoading(true);
         const response = await movieCredits(movieId);
-        setData(response || []);
+        const sortedCast = response.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
+        setCast(sortedCast || []);
       } catch (err) {
         setError(err.message || 'something wrong');
       } finally {
@@ -28,30 +34,25 @@ export default function MovieCast() {
     };
     fetchCast();
   }, [movieId]);
+    
+    const visibleCast = cast.slice(0, visibleCount);
+
+    const hundleLoadCast = () => {
+        setVisibleCount(prev => prev + 5);
+    }
 
   return (
-    <div>
+    <div >
       {loading && <Loader />}
       {error && <ErrorMessage message={error} />}
-      <ul>
-        {data.map(item => (
+      <ul className={css['cast-card']}>
+        {visibleCast.map(item => (
           <li key={item.cast_id} className={css.castItem}>
-            <img
-              src={
-                item.profile_path
-                  ? `https://image.tmdb.org/t/p/w200${item.profile_path}`
-                  : noImage
-              }
-              alt={item.name}
-              className={css.actorPhoto}
-            />
-            <p className={css.actorName}>{item.name}</p>
-            <p className={css.actorRole}>
-              Character: {item.character || 'Unknown'}
-            </p>
+            <CastItem cast={item} />
           </li>
         ))}
-      </ul>
+          </ul>
+          <button type='button' onClick={hundleLoadCast} className={css['btn-load-more']} disabled={visibleCount >= cast.length} >Load more</button>
     </div>
   );
 }

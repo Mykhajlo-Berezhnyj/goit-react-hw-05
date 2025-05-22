@@ -68,6 +68,7 @@ body {
   /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
+  color: beige;
 }
 
 h1 {
@@ -75,6 +76,28 @@ h1 {
   line-height: 1.1;
 }
 
+
+button {
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  color: blue;
+  cursor: pointer;
+  transform: scale(1);
+
+  &:not(:disabled):not(.active):hover {
+    background-image: radial-gradient(circle at center, white, blue);
+    color: orangered;
+    font-weight: 800;
+    transform: scale(1.1);
+  }
+
+  &:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
 /* button {
   border-radius: 8px;
   border: 1px solid transparent;
