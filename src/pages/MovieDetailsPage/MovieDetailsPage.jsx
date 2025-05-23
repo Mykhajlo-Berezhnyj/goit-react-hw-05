@@ -12,22 +12,21 @@ import {
 } from 'react-router-dom';
 
 export default function MovieDetailsPage() {
-    const { movieId } = useParams();
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [data, setData] = useState(null);
-    const location = useLocation();
-    const navigate = useNavigate();
-    const state = location.state;
-    console.log("🚀 ~ MovieDetailsPage ~ location:", location)
+  const { movieId } = useParams();
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState(null);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const state = location.state;
+  console.log('🚀 ~ MovieDetailsPage ~ location:', location);
 
-    const handleGoBack = () => { 
+  const handleGoBack = () => {
     navigate(location.state?.from || '/', {
       state: location.state,
     });
-    };
+  };
 
-    
   useEffect(() => {
     if (!movieId) return;
     const fetchDetails = async () => {
@@ -55,24 +54,40 @@ export default function MovieDetailsPage() {
       {data && (
         <div>
           <div className={css.card}>
-              {`${data.poster_path}` && (
-                <img
-                  src={`https://image.tmdb.org/t/p/w200${data.poster_path}`}
-                  alt={data.title || data.name}
-                />
-              )}
-              <div className={css.overview}>
-                <h2 className={css['title-movie']}>{data.original_title}</h2>
-                <p>{data.overview}</p>
-                <p>{data.release_date} </p>
-                <p>{data.genres?.map(genre => genre.name).join(', ')}</p>
-                <nav className={css.info}>
-                   <Link to="cast" state={{ from: state?.from?.pathname +state?.from?.search, pageScroll: state?.pageScroll }}>Cast</Link>
-                   <Link to="reviews">Reviews</Link>
-                </nav>
-              </div>
+            {`${data.poster_path}` && (
+              <img
+                src={`https://image.tmdb.org/t/p/w200${data.poster_path}`}
+                alt={data.title || data.name}
+              />
+            )}
+            <div className={css.overview}>
+              <h2 className={css['title-movie']}>{data.original_title}</h2>
+              <p>{data.overview}</p>
+              <p>{data.release_date} </p>
+              <p>{data.genres?.map(genre => genre.name).join(', ')}</p>
+              <nav className={css.info}>
+                <Link
+                  to="cast"
+                  state={{
+                    from: state?.from ?? '/',
+                    pageScroll: state?.pageScroll,
+                  }}
+                >
+                  Cast
+                </Link>
+                <Link
+                  to="reviews"
+                  state={{
+                    from: state?.from ?? '/',
+                    pageScroll: state?.pageScroll,
+                  }}
+                >
+                  Reviews
+                </Link>
+              </nav>
             </div>
-            <Outlet />
+          </div>
+          <Outlet />
         </div>
       )}
     </div>

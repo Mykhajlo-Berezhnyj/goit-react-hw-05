@@ -10,23 +10,23 @@ const axiosInstance = axios.create({
   },
 });
 
-export const getTrendingMovies = async (page=1) => {
+export const getTrendingMovies = async (page = 1) => {
   const { data } = await axiosInstance.get('/trending/movie/day', {
-      params: { page }
-    });
+    params: { page },
+  });
   return data;
 };
 
-export const searchMovie = async query => {
+export const searchMovie = async (query, page = 1) => {
   const { data } = await axiosInstance.get('/search/movie', {
     params: {
       query,
       language: 'en-US',
       include_adult: false,
-      page: 1,
+      page,
     },
   });
-  return data.results;
+  return data;
 };
 
 export const movieDetails = async movieId => {

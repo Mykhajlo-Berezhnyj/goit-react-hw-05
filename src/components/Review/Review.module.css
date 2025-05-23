@@ -1,25 +1,27 @@
 .reviewContainer {
-    display: flex;
-    gap: 20px;
-    
+  display: flex;
+  gap: 20px;
+  padding: 20px;
 }
 
 .avtorInfo {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 120px;
+  padding: 10px;
 }
 
-
 .avatar {
-    max-width: 100px;
+  max-width: 100px;
 }
 
 .reviewContent {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 30px;
 }
