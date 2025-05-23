@@ -40,10 +40,12 @@ export default function HomePage() {
   };
 
   return (
-      <div className={css.container}>
-        <Navigation />
-        <div className={css['list-wrapper']}>
-        <h2 className={css.title}>Trending <span>today:</span></h2>
+    <div className={css.container}>
+      <Navigation />
+      <div className={css['list-wrapper']}>
+        <h2 className={css.title}>
+          Trending <span>today:</span>
+        </h2>
         {loading && <Loader />}
         {error && <ErrorMessage message={error} />}
         <MovieList className={css.list} movies={movies} />

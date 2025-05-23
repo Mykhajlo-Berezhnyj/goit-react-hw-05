@@ -56,16 +56,18 @@ export default function MoviesPage() {
   return (
     <div className={css.container}>
       <Navigation />
-      <h2 className={css.title} >Search <span>Movie</span></h2>
-        <Toaster
-               position="top-center"
-                 reverseOrder={false} />
+      <h2 className={css.title}>
+        Search <span>Movie</span>
+      </h2>
+      <Toaster position="top-center" reverseOrder={false} />
       <SearchForm onSearch={handleSearch} />
       {loading && <Loader />}
       {error && <ErrorMessage message={error} />}
       {movies.length > 0 && <MovieList movies={movies} />}
       {!loading && movies.length === 0 && query && (
-        <p className={css['no-movie']} >No movie found this query. Try a different search.</p>
+        <p className={css['no-movie']}>
+          No movie found this query. Try a different search.
+        </p>
       )}
       {totalPages > 1 && (
         <ButtonNavigation

@@ -1,16 +1,15 @@
 .container-detalies {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-
 .info {
-    display: flex;
-    justify-content: flex-end;
-    font-size: 20px;
-    margin-top: -50px;
-   
-    & .info-link {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 20px;
+  margin-top: -50px;
+
+  & .info-link {
     width: 70px;
     background-image: radial-gradient(circle at center, beige, blue);
     color: blue;
@@ -21,85 +20,82 @@
     border-top-right-radius: 12px;
     border-top: 2px solid orangered;
     border-left: 2px solid orangered;
-   }
+  }
 
-   & .info-link:hover {
+  & .info-link:hover {
     background-image: radial-gradient(circle at center, blue, lightcoral);
     color: white;
     font-weight: 700;
     letter-spacing: 2.2px;
     animation: pulseShadow 2s infinite;
+  }
 
-   }
-
-   & .reviews-link {
+  & .reviews-link {
     border-bottom-right-radius: 12px;
     border-right: 2px solid orangered;
-   }
+  }
 }
-
 
 .btn-back {
-    display: block;
-    position: relative;
-    max-width: 60px;
-    margin-bottom: 20px;
-    border-radius: 10px;    
-    color: blue;
-    cursor: pointer;
-    transform: scale(1);
+  display: block;
+  position: relative;
+  max-width: 60px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  color: blue;
+  cursor: pointer;
+  transform: scale(1);
 
-    &::after {
-        content: '<<';
-        position: absolute;
-        top: 4px;  
-        right: -30px;
-        color: brown;
-        font-size: large;
-        font-weight: 800;
-        opacity: 0;
-    }
-    
-     &:hover {
-            background-image: radial-gradient(circle at center, white, blue);
-            color: orangered;
-            font-weight: 700;
-            padding-left: 8px;
-            transform: scale(1.1);
-            margin-bottom: 16px;
-        }
+  &::after {
+    content: '<<';
+    position: absolute;
+    top: 4px;
+    right: -30px;
+    color: brown;
+    font-size: large;
+    font-weight: 800;
+    opacity: 0;
+  }
 
-     &:hover::after {
-       opacity: 1;
-       animation: blinking 1s infinite;
-        }
+  &:hover {
+    background-image: radial-gradient(circle at center, white, blue);
+    color: orangered;
+    font-weight: 700;
+    padding-left: 8px;
+    transform: scale(1.1);
+    margin-bottom: 16px;
+  }
 
-    }
-
-@keyframes blinking {
-     0% {
-        opacity: 1;
-    }
-    50% {
-         opacity: 0;
-        }
-    100% {
-         opacity: 1;
-    }
+  &:hover::after {
+    opacity: 1;
+    animation: blinking 1s infinite;
+  }
 }
 
-@keyframes pulseShadow {     
-    0% {
-        box-shadow: 0px 0px 5px 4px rgba(255, 255, 255, 0.9),
-                    0px 0px 10px 6px rgba(255, 69, 0, 0.8);
-        }
-    50% {
-        box-shadow: 0px 0px 30px 12px rgba(255, 255, 255, 1),
-                    0px 0px 50px 20px rgba(255, 69, 0, 0.9);
-        }
-    
-    100% {
-        box-shadow: 0px 0px 25px 8px rgba(255, 255, 255, 0.9),
-                    0px 0px 40px 15px rgba(255, 69, 0, 0.8);
-        }     
-    }
+@keyframes blinking {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes pulseShadow {
+  0% {
+    box-shadow: 0px 0px 5px 4px rgba(255, 255, 255, 0.9),
+      0px 0px 10px 6px rgba(255, 69, 0, 0.8);
+  }
+  50% {
+    box-shadow: 0px 0px 30px 12px rgba(255, 255, 255, 1),
+      0px 0px 50px 20px rgba(255, 69, 0, 0.9);
+  }
+
+  100% {
+    box-shadow: 0px 0px 25px 8px rgba(255, 255, 255, 0.9),
+      0px 0px 40px 15px rgba(255, 69, 0, 0.8);
+  }
+}

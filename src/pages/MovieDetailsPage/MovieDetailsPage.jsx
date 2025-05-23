@@ -46,36 +46,45 @@ export default function MovieDetailsPage() {
   }, [movieId]);
 
   return (
-      <div className={css.container}>
+    <div className={css.container}>
       <Navigation />
-      <button className={css['btn-back']} type="button" onClick={handleGoBack} aria-label="Go back to previous page">
+      <button
+        className={css['btn-back']}
+        type="button"
+        onClick={handleGoBack}
+        aria-label="Go back to previous page"
+      >
         Back
       </button>
       {loading && <Loader />}
       {error && <ErrorMessage />}
       {data && (
-        <div className={css['container-detalies']} >
-            <MovieItem movie={data}/>   
-            <nav className={css.info}>
-                <Link className={css['info-link']}
-                  to="cast"
-                  state={{
-                    from: state?.from ?? '/',
-                    pageScroll: state?.pageScroll,
-                  }} aria-label={'Open info about actors'}
-                >
-                  Cast
-                </Link>
-                      <Link className={`${css['info-link']} ${css['reviews-link']}`}
-                  to="reviews"
-                  state={{
-                    from: state?.from ?? '/',
-                    pageScroll: state?.pageScroll,
-                  }} aria-label={'Open reviews'}
-                >
-                  Reviews
-                </Link>
-            </nav>
+        <div className={css['container-detalies']}>
+          <MovieItem movie={data} />
+          <nav className={css.info}>
+            <Link
+              className={css['info-link']}
+              to="cast"
+              state={{
+                from: state?.from ?? '/',
+                pageScroll: state?.pageScroll,
+              }}
+              aria-label={'Open info about actors'}
+            >
+              Cast
+            </Link>
+            <Link
+              className={`${css['info-link']} ${css['reviews-link']}`}
+              to="reviews"
+              state={{
+                from: state?.from ?? '/',
+                pageScroll: state?.pageScroll,
+              }}
+              aria-label={'Open reviews'}
+            >
+              Reviews
+            </Link>
+          </nav>
           <Outlet />
         </div>
       )}

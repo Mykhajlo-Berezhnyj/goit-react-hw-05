@@ -3,11 +3,11 @@ import css from './ButtonNavigation.module.css';
 import clsx from 'clsx';
 
 export default function ButtonNavigation({ page, totalPages, onClick }) {
-    const inputRef = useRef(null);
+  const inputRef = useRef(null);
 
-    function getVisiblePages(current, total) {
-        const visible = 1;
-        const pages = [];
+  function getVisiblePages(current, total) {
+    const visible = 1;
+    const pages = [];
 
     if (total < 7) return Array.from({ length: total }, (_, i) => i + 1);
 
@@ -34,18 +34,39 @@ export default function ButtonNavigation({ page, totalPages, onClick }) {
     return pages;
   }
 
-    const handleGoPage = () => {
-        const goPage = inputRef.current.value.trim();
-        onClick(goPage < totalPages ? goPage : totalPages);
-        inputRef.current.value = '';
-    }
-    
+  const handleGoPage = () => {
+    const goPage = inputRef.current.value.trim();
+    onClick(goPage < totalPages ? goPage : totalPages);
+    inputRef.current.value = '';
+  };
+
   return (
-      <div className={css.btns}>
-          {totalPages>5 &&(<div>
-              <input className={css['input-btn']} type="number" name='page-number' placeholder='page?' ref={inputRef} onChange={(e) => {if (e.target.value === "") return; if(e.target.value<1) e.target.value=1}}  />
-              <button className={css['btn-nav']} type='button' onClick={handleGoPage}>Go</button>
-          </div>)}
+    <div className={css.btns}>
+      {totalPages > 5 && (
+        <div>
+          <input
+            className={css['input-btn']}
+            type="number"
+            name="page-number"
+            placeholder="page?"
+            ref={inputRef}
+            onChange={e => {
+              if (e.target.value === '') return;
+              if (e.target.value < 1) e.target.value = 1;
+            }}
+            onKeyDown={e => {
+              if (e.key === 'Enter') handleGoPage();
+            }}
+          />
+          <button
+            className={css['btn-nav']}
+            type="button"
+            onClick={handleGoPage}
+          >
+            Go
+          </button>
+        </div>
+      )}
       <button
         type="button"
         className={css['btn-nav']}

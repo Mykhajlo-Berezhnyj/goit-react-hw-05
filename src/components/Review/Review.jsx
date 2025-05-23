@@ -3,9 +3,9 @@ import noImage from '../../img/avatar.png';
 import { useLocation } from 'react-router-dom';
 
 export default function Review({ review }) {
-    const location = useLocation();
-    const state = location.state;
-    
+  const location = useLocation();
+  const state = location.state;
+
   return (
     <div className={css.reviewContainer}>
       <div className={css.avtorInfo}>
@@ -24,7 +24,12 @@ export default function Review({ review }) {
         <p>{review.content}</p>
         <p className={css.data}>Created: {review.created_at}</p>
         <p className={css.data}>Updated: {review.updated_at}</p>
-        <a className={css['review-link']} href={review.url} target="_blank" rel="noopener noreferrer">
+        <a
+          className={css['review-link']}
+          href={review.url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           View original review
         </a>
       </div>

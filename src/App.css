@@ -5,7 +5,7 @@
   padding: 2rem;
   text-align: center;
   color: beige;
-  background-image: linear-gradient(to right, rgb(36, 3, 58), rgb(17, 1, 58)); 
+  background-image: linear-gradient(to right, rgb(36, 3, 58), rgb(17, 1, 58));
 }
 
 .container {
@@ -62,4 +62,3 @@
   color: white;
   scale: 1.1;
 }
-

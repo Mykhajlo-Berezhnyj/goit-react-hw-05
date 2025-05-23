@@ -1,16 +1,14 @@
 .movie-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .item {
-    color: beige;
-    padding: 10px;
+  color: beige;
+  padding: 10px;
 
-    &:hover {
+  &:hover {
     background-image: linear-gradient(to left, rgb(10, 60, 168), rgb(5, 5, 83));
-
-    }
+  }
 }
-
