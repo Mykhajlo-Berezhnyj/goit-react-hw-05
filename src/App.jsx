@@ -10,7 +10,7 @@ const Home = lazy(() => import('./pages/HomePage/HomePage'));
 const Movies = lazy(() => import('./pages/MoviesPage/MoviesPage'));
 const MovieDetails = lazy(() => import('./pages/MovieDetailsPage/MovieDetailsPage'));
 const MovieCast = lazy(() => import('./components/MovieCast/MovieCast'));
-const MovieReviews = lazy(() => import('./components/MovieReviews/MovieReviews '));
+const MovieReviews = lazy(() => import('./components/MovieReviews/MovieReviews'));
 const NotFound = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
 
 
@@ -19,7 +19,6 @@ function App() {
  
   return (
     <div className="container">
-      <Navigation />
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path='/' element={<Home />} />

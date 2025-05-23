@@ -4,8 +4,9 @@ import Loader from '../../components/Loader/Loader';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import { getTrendingMovies } from '../../servise/movieApi';
 import ButtonNavigation from '../../components/ButtonNavigation/ButtonNavigation';
-import css from './home.module.css';
+import css from './HomePage.module.css';
 import { useSearchParams } from 'react-router-dom';
+import Navigation from '../../components/Navigation/Navigation';
 
 export default function HomePage() {
   const [error, setError] = useState(null);
@@ -39,9 +40,10 @@ export default function HomePage() {
   };
 
   return (
-    <div className={css.container}>
-      <div className={css['list-wrapper']}>
-        <h2 className={css.title}>Trending today:</h2>
+      <div className={css.container}>
+        <Navigation />
+        <div className={css['list-wrapper']}>
+        <h2 className={css.title}>Trending <span>today:</span></h2>
         {loading && <Loader />}
         {error && <ErrorMessage message={error} />}
         <MovieList className={css.list} movies={movies} />

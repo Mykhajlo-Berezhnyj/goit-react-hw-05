@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import MovieItem from '../MovieItem/MovieItem';
 import css from './MovieList.module.css';
 

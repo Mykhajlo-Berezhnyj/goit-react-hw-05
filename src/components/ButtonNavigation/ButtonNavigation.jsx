@@ -42,8 +42,10 @@ export default function ButtonNavigation({ page, totalPages, onClick }) {
     
   return (
       <div className={css.btns}>
-          <input className={css['input-btn']} type="number" name='page-number' placeholder='page?' ref={inputRef} onChange={(e) => {if (e.target.value === "") return; if(e.target.value<1) e.target.value=1}}  />
-          <button className={css['btn-nav']} type='button' onClick={handleGoPage}>Go</button>
+          {totalPages>5 &&(<div>
+              <input className={css['input-btn']} type="number" name='page-number' placeholder='page?' ref={inputRef} onChange={(e) => {if (e.target.value === "") return; if(e.target.value<1) e.target.value=1}}  />
+              <button className={css['btn-nav']} type='button' onClick={handleGoPage}>Go</button>
+          </div>)}
       <button
         type="button"
         className={css['btn-nav']}

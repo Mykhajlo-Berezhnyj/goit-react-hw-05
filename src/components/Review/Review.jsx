@@ -22,9 +22,9 @@ export default function Review({ review }) {
       </div>
       <div className={css.reviewContent}>
         <p>{review.content}</p>
-        <p>Created: {review.created_at}</p>
-        <p>Updated: {review.updated_at}</p>
-        <a href={review.url} target="_blank" rel="noopener noreferrer">
+        <p className={css.data}>Created: {review.created_at}</p>
+        <p className={css.data}>Updated: {review.updated_at}</p>
+        <a className={css['review-link']} href={review.url} target="_blank" rel="noopener noreferrer">
           View original review
         </a>
       </div>

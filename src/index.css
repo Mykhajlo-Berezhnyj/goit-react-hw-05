@@ -13,7 +13,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 body {
-  background-image: linear-gradient(to right, rgb(17, 1, 58), rgb(50, 3, 82));
+  
 }
 
 h1,
@@ -33,14 +33,14 @@ ol {
   margin: 0;
 }
 
-button {
+/* button {
   padding: 0;
   border: none;
   font: inherit;
   color: inherit;
   background-color: transparent;
   cursor: pointer;
-}
+} */
 
 a {
   text-decoration: none;
@@ -54,13 +54,16 @@ img {
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
+  font-weight: 600;
+  color: beige;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: orangered;
 }
+ h {
+  color: sandybrown;
+ }
 
 body {
   margin: 0;
@@ -84,12 +87,17 @@ button {
   color: blue;
   cursor: pointer;
   transform: scale(1);
+  text-align: center;
+  align-items: center;
 
   &:not(:disabled):not(.active):hover {
     background-image: radial-gradient(circle at center, white, blue);
-    color: orangered;
+    color: brown;
     font-weight: 800;
-    transform: scale(1.1);
+    transform: scale(1.05);
+    animation: pulseShadowBtn 2s infinite;
+    /* box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, 0.9),
+        0px 0px 7px 4px rgba(255, 69, 0, 0.8); */
   }
 
   &:disabled {
@@ -98,6 +106,30 @@ button {
     opacity: 0.6;
   }
 }
+
+@keyframes pulseShadowBtn {
+  0% {
+    box-shadow: 0px 0px 2px 0px rgba(255, 255, 255, 0.9),
+      0px 0px 4px 2px rgba(255, 69, 0, 0.8);
+  }
+
+  33% {
+    box-shadow: 0px 0px 6px 3px rgba(255, 255, 255, 0.9),
+        0px 0px 8px 4px rgba(255, 69, 0, 0.8);
+  }
+
+  66% {
+    box-shadow: 0px 0px 15px 8px rgba(255, 255, 255, 0.9),
+      0px 0px 14px 10px rgba(255, 69, 0, 0.8);
+  }
+
+    100% {
+      box-shadow: 0px 0px 6px 3px rgba(255, 255, 255, 0.9),
+          0px 0px 8px 4px rgba(255, 69, 0, 0.8);
+    }
+}
+
+
 /* button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -117,7 +149,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 } */
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
@@ -128,4 +160,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */

@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import css from './MovieCast .module.css';
 import Loader from '../Loader/Loader';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { movieCredits } from '../../servise/movieApi';
 import CastItem from '../CastItem/CastItem';
+
 
 export default function MovieCast() {
   const [error, setError] = useState(null);
@@ -12,8 +13,9 @@ export default function MovieCast() {
   const [cast, setCast] = useState([]);
   const [visibleCount, setVisibleCount] = useState(5);
   const { movieId } = useParams();
-  const location = useLocation();
-  const state = location.state;
+
+    
+    
 
   useEffect(() => {
     const fetchCast = async () => {
@@ -22,9 +24,7 @@ export default function MovieCast() {
         setError(null);
         setLoading(true);
         const response = await movieCredits(movieId);
-        const sortedCast = response.sort(
-          (a, b) => (b.popularity || 0) - (a.popularity || 0),
-        );
+        const sortedCast = response.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
         setCast(sortedCast || []);
       } catch (err) {
         setError(err.message || 'something wrong');
@@ -34,32 +34,28 @@ export default function MovieCast() {
     };
     fetchCast();
   }, [movieId]);
+    
+    const visibleCast = cast.slice(0, visibleCount);
 
-  const visibleCast = cast.slice(0, visibleCount);
-
-  const hundleLoadCast = () => {
-    setVisibleCount(prev => prev + 5);
-  };
+    const hundleLoadCast = () => {
+        setVisibleCount(prev => prev + 5);
+    }
 
   return (
-    <div>
+    <div >
       {loading && <Loader />}
       {error && <ErrorMessage message={error} />}
-      <ul className={css['cast-card']}>
-        {visibleCast.map(item => (
-          <li key={item.cast_id} className={css.castItem}>
-            <CastItem cast={item} />
-          </li>
-        ))}
-      </ul>
-      <button
-        type="button"
-        onClick={hundleLoadCast}
-        className={css['btn-load-more']}
-        disabled={visibleCount >= cast.length}
-      >
-        Load more
-      </button>
+          {cast.length > 0 ? (
+              <>
+                  <ul className={css['cast-card']}>
+                      {visibleCast.map(item => (
+                          <li key={item.cast_id} className={css.castItem}>
+                              <CastItem cast={item} />
+                          </li>
+                      ))}
+                  </ul>
+                  <button type='button' onClick={hundleLoadCast} className={css['btn-load-more']} disabled={visibleCount >= cast.length} aria-label="Load more cast members">Load more</button>
+              </>) : (<p className={css['no-cast']}>No cast information available.</p>)}
     </div>
   );
 }

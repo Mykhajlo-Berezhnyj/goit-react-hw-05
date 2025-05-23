@@ -1,12 +1,14 @@
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import Loader from '../../components/Loader/Loader';
 import SearchForm from '../../components/SearchForm/SearchForm';
+import Navigation from '../../components/Navigation/Navigation';
 import { searchMovie } from '../../servise/movieApi';
 import MovieList from '../../components/MovieList/MovieList';
 import ButtonNavigation from '../../components/ButtonNavigation/ButtonNavigation';
 import css from './MoviesPage.module.css';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 
 export default function MoviesPage() {
   const [loading, setLoading] = useState(false);
@@ -52,15 +54,18 @@ export default function MoviesPage() {
   }, [query, page]);
 
   return (
-    <div>
-      <h2>Search Movie</h2>
+    <div className={css.container}>
+      <Navigation />
+      <h2 className={css.title} >Search <span>Movie</span></h2>
+        <Toaster
+               position="top-center"
+                 reverseOrder={false} />
+      <SearchForm onSearch={handleSearch} />
       {loading && <Loader />}
       {error && <ErrorMessage message={error} />}
-      <SearchForm onSearch={handleSearch} />
-      {movies.length > 0 ? (
-        <MovieList movies={movies} />
-      ) : (
-        <p>No movie found this query</p>
+      {movies.length > 0 && <MovieList movies={movies} />}
+      {!loading && movies.length === 0 && query && (
+        <p className={css['no-movie']} >No movie found this query. Try a different search.</p>
       )}
       {totalPages > 1 && (
         <ButtonNavigation

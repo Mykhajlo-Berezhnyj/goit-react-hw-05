@@ -12,6 +12,38 @@
 
 }
 
+.card {
+  display: flex;
+  gap: 24px;
+ 
+}
+
+.border {
+  padding: 6px;
+  border-radius: 12px;
+  border: 2px solid orangered;
+}
+
+.overview {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 14px;
+  padding: 10px 24px 30px;
+  color: beige;
+
+}
+
+.title-movie {
+  color: sandybrown;
+  text-decoration: underline;
+
+  &:hover {
+    color: orangered;
+  }
+}
+
+
 .movie {
   color: beige;
   font-size: 20px;
@@ -26,9 +58,17 @@
   }
 }
 
-.overview {
+.data {
+  color: burlywood;
+}
+
+.poster {
+  border-radius: 12px;
+  max-width: 200px;
+}
+
+.statistic {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 20px;
+  gap: 25px;
+  color: lightpink;
 }

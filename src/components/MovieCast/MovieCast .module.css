@@ -16,3 +16,16 @@ padding: 20px 0;
   
 }
 
+img {
+  border-radius: 12px;
+}
+
+.no-cast {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  padding-top: 20px;
+  color: #ff2c2c;
+}
+
+  

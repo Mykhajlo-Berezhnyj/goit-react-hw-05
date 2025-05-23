@@ -3,6 +3,7 @@ import Loader from '../../components/Loader/Loader';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import { movieDetails } from '../../servise/movieApi';
 import css from './MovieDetailsPage.module.css';
+import Navigation from '../../components/Navigation/Navigation';
 import {
   Link,
   useParams,
@@ -10,6 +11,7 @@ import {
   useLocation,
   useNavigate,
 } from 'react-router-dom';
+import MovieItem from '../../components/MovieItem/MovieItem';
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
@@ -19,7 +21,6 @@ export default function MovieDetailsPage() {
   const location = useLocation();
   const navigate = useNavigate();
   const state = location.state;
-  console.log('🚀 ~ MovieDetailsPage ~ location:', location);
 
   const handleGoBack = () => {
     navigate(location.state?.from || '/', {
@@ -45,48 +46,36 @@ export default function MovieDetailsPage() {
   }, [movieId]);
 
   return (
-    <div className={css.container}>
-      <button className={css['btn-back']} type="button" onClick={handleGoBack}>
+      <div className={css.container}>
+      <Navigation />
+      <button className={css['btn-back']} type="button" onClick={handleGoBack} aria-label="Go back to previous page">
         Back
       </button>
       {loading && <Loader />}
       {error && <ErrorMessage />}
       {data && (
-        <div>
-          <div className={css.card}>
-            {`${data.poster_path}` && (
-              <img
-                src={`https://image.tmdb.org/t/p/w200${data.poster_path}`}
-                alt={data.title || data.name}
-              />
-            )}
-            <div className={css.overview}>
-              <h2 className={css['title-movie']}>{data.original_title}</h2>
-              <p>{data.overview}</p>
-              <p>{data.release_date} </p>
-              <p>{data.genres?.map(genre => genre.name).join(', ')}</p>
-              <nav className={css.info}>
-                <Link
+        <div className={css['container-detalies']} >
+            <MovieItem movie={data}/>   
+            <nav className={css.info}>
+                <Link className={css['info-link']}
                   to="cast"
                   state={{
                     from: state?.from ?? '/',
                     pageScroll: state?.pageScroll,
-                  }}
+                  }} aria-label={'Open info about actors'}
                 >
                   Cast
                 </Link>
-                <Link
+                      <Link className={`${css['info-link']} ${css['reviews-link']}`}
                   to="reviews"
                   state={{
                     from: state?.from ?? '/',
                     pageScroll: state?.pageScroll,
-                  }}
+                  }} aria-label={'Open reviews'}
                 >
                   Reviews
                 </Link>
-              </nav>
-            </div>
-          </div>
+            </nav>
           <Outlet />
         </div>
       )}
