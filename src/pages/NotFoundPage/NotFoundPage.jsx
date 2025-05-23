@@ -26,7 +26,7 @@ export default function NotFoundPage() {
         <div className={css.container}>
         <h2 className={css.notFound} >404 Page Not Found 😕</h2>
             <Link className={css.backHome} to="/">Back to Home</Link>
-            <p>Redirect after {seconds} s</p>
+            <p>Redirect after {seconds} пшs</p>
     </div>
     )
 }
