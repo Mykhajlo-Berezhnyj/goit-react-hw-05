@@ -1,6 +1,6 @@
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import css from './MovieItem.module.css';
-import noImage from '../../img/no-image.jpg';
+import noImage from '../../../img/no-image.jpg';
 
 export default function MovieItem({ movie }) {
   const location = useLocation();
@@ -29,9 +29,15 @@ export default function MovieItem({ movie }) {
             className={css.poster}
             src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
             alt={movie.title || movie.name}
+            loading="lazy"
           />
         ) : (
-          <img className={css.poster} src={noImage} alt="No Image Available" />
+          <img
+            className={css.poster}
+            src={noImage}
+            alt="No Image Available"
+            loading="lazy"
+          />
         )}
         <div className={css.overview}>
           <h2 className={css['title-movie']}>

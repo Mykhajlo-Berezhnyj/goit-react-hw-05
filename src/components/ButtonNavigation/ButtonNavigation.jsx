@@ -35,7 +35,7 @@ export default function ButtonNavigation({ page, totalPages, onClick }) {
   }
 
   const handleGoPage = () => {
-    const goPage = inputRef.current.value.trim();
+    const goPage = parseInt(inputRef.current.value.trim());
     onClick(goPage < totalPages ? goPage : totalPages);
     inputRef.current.value = '';
   };

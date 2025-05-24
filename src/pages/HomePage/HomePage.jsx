@@ -25,7 +25,6 @@ export default function HomePage() {
         const { results, total_pages } = await getTrendingMovies(page);
         setMovies(results);
         setTotalPages(total_pages);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
       } catch (err) {
         setError(err.message || 'Something went wrong.');
       } finally {

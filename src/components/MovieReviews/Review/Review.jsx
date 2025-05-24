@@ -1,5 +1,5 @@
 import css from './Review.module.css';
-import noImage from '../../img/avatar.png';
+import noImage from '../../../img/avatar.png';
 import { useLocation } from 'react-router-dom';
 
 export default function Review({ review }) {

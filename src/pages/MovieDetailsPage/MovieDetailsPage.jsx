@@ -11,7 +11,7 @@ import {
   useLocation,
   useNavigate,
 } from 'react-router-dom';
-import MovieItem from '../../components/MovieItem/MovieItem';
+import MovieItem from '../../components/MovieList/MovieItem/MovieItem';
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
@@ -62,6 +62,17 @@ export default function MovieDetailsPage() {
         <div className={css['container-detalies']}>
           <MovieItem movie={data} />
           <nav className={css.info}>
+            <Link
+              className={css['info-link']}
+              to="videos"
+              state={{
+                from: state?.from ?? '/',
+                pageScroll: state?.pageScroll,
+              }}
+              aria-label={'Open trailer movie'}
+            >
+              Trailer
+            </Link>
             <Link
               className={css['info-link']}
               to="cast"

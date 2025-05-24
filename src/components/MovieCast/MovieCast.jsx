@@ -4,7 +4,7 @@ import Loader from '../Loader/Loader';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import { useParams } from 'react-router-dom';
 import { movieCredits } from '../../servise/movieApi';
-import CastItem from '../CastItem/CastItem';
+import CastItem from './CastItem/CastItem';
 
 export default function MovieCast() {
   const [error, setError] = useState(null);
@@ -15,7 +15,6 @@ export default function MovieCast() {
 
   useEffect(() => {
     const fetchCast = async () => {
-      console.log('Fetching cast for movieId:', movieId);
       try {
         setError(null);
         setLoading(true);

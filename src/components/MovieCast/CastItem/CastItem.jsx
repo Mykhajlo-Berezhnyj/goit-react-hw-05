@@ -1,5 +1,5 @@
 import css from './CastItem.module.css';
-import noImage from '../../img/no-image.jpg';
+import noImage from '../../../img/no-image.jpg';
 
 export default function CastItem({ cast }) {
   return (
@@ -12,6 +12,7 @@ export default function CastItem({ cast }) {
         }
         alt={cast.name}
         className={css.actorPhoto}
+        loading="lazy"
       />
       <div className={css.actorInfo}>
         <h4 className={css.actorName}>{cast.name}</h4>

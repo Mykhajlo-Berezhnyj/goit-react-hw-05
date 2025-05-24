@@ -43,3 +43,8 @@ export const movieReviews = async movieId => {
   const { data } = await axiosInstance.get(`/movie/${movieId}/reviews`);
   return data.results;
 };
+
+export const movieVideo = async movieId => {
+  const { data } = await axiosInstance.get(`/movie/${movieId}/videos`);
+  return data.results;
+};

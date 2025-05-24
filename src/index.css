@@ -71,6 +71,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   color: beige;
+  background-image: linear-gradient(to right, rgb(36, 3, 58), rgb(17, 1, 58));
 }
 
 h1 {

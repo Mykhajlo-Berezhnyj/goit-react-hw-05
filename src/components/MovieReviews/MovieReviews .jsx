@@ -3,6 +3,7 @@ import css from './MovieReviews .module.css';
 import Loader from '../Loader/Loader';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import { useLocation, useParams } from 'react-router-dom';
+console.log('🚀 ~ Location:', Location);
 import { movieReviews } from '../../servise/movieApi';
 import Review from './Review/Review';
 
@@ -12,9 +13,11 @@ export default function MovieReviews() {
   const [reviews, setReviews] = useState([]);
   const { movieId } = useParams();
   const location = useLocation();
+  console.log('🚀 ~ MovieReviews ~ Location:', Location);
 
   useEffect(() => {
     const fetchReviews = async () => {
+      console.log('Fetching cast for movieId:', movieId);
       try {
         setError(null);
         setLoading(true);
@@ -37,7 +40,7 @@ export default function MovieReviews() {
     <div>
       {loading && <Loader />}
       {error && <ErrorMessage message={error} />}
-      {reviews.length > 0 && (
+      {reviews.length > 0 ? (
         <ul>
           {reviews.map(review => (
             <li key={review.id}>
@@ -45,8 +48,7 @@ export default function MovieReviews() {
             </li>
           ))}
         </ul>
-      )}
-      {!loading && reviews.length === 0 && (
+      ) : (
         <p className={css.noReviews}>No reviews</p>
       )}
     </div>
